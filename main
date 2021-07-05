@@ -1,0 +1,81 @@
+//undone yet
+
+1. Create user-defined score
+eg.
+Class Score {
+Int PlayerXScore;
+Int PlayerYScore;
+}
+
+2. Create user-defined player
+eg.
+Class Player {
+Enum Player = [PlayerX, PlayerY]
+Float Hits
+}
+
+3. Create score instance as global variable
+eg.
+Score score = new Score( 0, 0 )
+
+4. Create player instance once
+eg.
+Player playerX = new Player(PlayerX)
+
+5. Clone previous player to new player
+eg.
+Player playerY = clone(playerX)
+
+6. Create 2 thread and cast each player instance to each thread
+eg.
+Thread playerXThread = Thread()
+playerXThread.start(playerX)
+Thread playerYThread = Thread()
+playerYThread.start(playerY)
+
+7. Simulation flow
+a. Start from random player, player X or player Y
+b. Instruct player thread to randomize Player.Hits from 0 to 100
+if Player.Hits is less than or equal to 50; update score +1 to opponent score
+else if Player.Hits is more than 50; instruct opponent player thread to repeat from point b
+c. Stop the application if any player has score 10
+
+THIS IS JUST AN EXAMPLE:
+## Start pong simulation
+===========================
+## Instance Score
+Class Score {
+Int PlayerXScore = 0;
+Int PlayerYScore = 0;
+}
+===========================
+## Instance Player X
+Class PlayerX {
+String Player = PlayerX
+Float Hits
+}
+===========================
+## Instance Player Y
+Class PlayerY {
+String Player = PlayerY
+Float Hits
+}
+===========================
+## Start from Player Y
+Class PlayerY {
+String Player = PlayerY
+Float Hits = 67 // continue to player X
+}
+===========================
+## Continue to Player X
+Class PlayerX {
+String Player = PlayerX
+Float Hits = 30 // player X is lose, update score
+}
+Class Score {
+Int PlayerXScore = 0;
+Int PlayerYScore = 1;
+}
+===========================
+## Repeat until one of the player has score 10
+## Player X wins this round
